@@ -1,0 +1,44 @@
+<script>
+  function calculate() {
+    const form = document.forms['quizForm'];
+    let total = 0;
+    let answeredAll = true;
+
+    for (let i = 1; i <= 14; i++) {
+      const qList = form['q' + i];
+      if (!qList || !qList.value) {
+        answeredAll = false;
+        continue;
+      }
+      total += parseInt(qList.value);
+    }
+
+    if (!answeredAll) {
+      alert('Lütfen tüm soruları yanıtlayınız.');
+      return;
+    }
+
+    const worldCount = (total / 300).toFixed(2);
+    document.getElementById('result').innerText =
+      `Toplam puanınız: ${total}\nEğer herkes sizin gibi yaşasaydı, ${worldCount} Dünya'ya ihtiyaç olurdu.`;
+
+    // Google Sheets'e veri gönder
+    fetch('https://script.google.com/macros/s/AKfycbwN2KY0hygaIF_OGQR1WXy7YaDhWpb2ukzj6PBnlzl4XGrnLIwzMOqSlI43ipvwPaYHmQ/exec', {
+      method: 'POST',
+      body: JSON.stringify({
+        totalScore: total,
+        worldCount: worldCount
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Veri başarıyla gönderildi.");
+    })
+    .catch(error => {
+      console.error("Hata oluştu:", error);
+    });
+  }
+</script>
