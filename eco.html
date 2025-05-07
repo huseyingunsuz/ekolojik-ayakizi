@@ -1,0 +1,204 @@
+
+<script>
+  function calculate() {
+    const form = document.forms['quizForm'];
+    let total = 0;
+    let answeredAll = true;
+
+    for (let i = 1; i <= 14; i++) {
+      const qList = form['q' + i];
+      if (!qList || !qList.value) {
+        answeredAll = false;
+        continue;
+      }
+      total += parseInt(qList.value);
+    }
+
+    if (!answeredAll) {
+      alert('Lütfen tüm soruları yanıtlayınız.');
+      return;
+    }
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ekolojik Ayak İzi Hesaplama Cetveli</title>
+  <style>
+    body { font-family: Arial; max-width: 800px; margin: auto; padding: 20px; line-height: 1.6; }
+    h1 { color: #2e7d32; }
+    h2 { color: #1565c0; }
+    .section { margin-top: 30px; }
+    .question { margin-bottom: 20px; }
+    button { margin-top: 20px; padding: 10px 20px; }
+    .result { margin-top: 20px; font-weight: bold; font-size: 1.2em; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Ekolojik Ayak İzi Hesaplayıcı</h1>
+
+  <form id="quizForm">
+
+    <!-- GIDA -->
+    <div class="section">
+      <h2>GIDA</h2>
+      <div class="question">
+        <label>1. Sıradan bir günde et tüketimim........</label><br>
+        <input type="radio" name="q1" value="600"> a. yüksektir, birkaç defa et yiyorum (600 Puan)<br>
+        <input type="radio" name="q1" value="400"> b. normaldir, günde bir kez et yiyorum (400 Puan)<br>
+        <input type="radio" name="q1" value="300"> c. düşüktür, günaşırı et yiyorum (300 Puan)<br>
+        <input type="radio" name="q1" value="200"> d. olmaz, vejetaryenim (200 Puan)<br>
+        <input type="radio" name="q1" value="150"> e. olmaz, veganım (150 Puan)
+      </div>
+      <div class="question">
+        <label>2. Yiyeceklerim yerel ürünlerden oluşuyor.</label><br>
+        <input type="radio" name="q2" value="0"> a. Çoğu (0 Puan)<br>
+        <input type="radio" name="q2" value="30"> b. Bazıları (30 Puan)<br>
+        <input type="radio" name="q2" value="60"> c. Hiçbiri (60 Puan)
+      </div>
+      <div class="question">
+        <label>3. Meyve/sebze atıklarını ve kabuklarını kompost yapıyorum.</label><br>
+        <input type="radio" name="q3" value="-20"> a. Evet (-20 Puan)<br>
+        <input type="radio" name="q3" value="60"> b. Hayır (60
+      </div>
+      <div class="question">
+        <label>4. Organik gıda tüketiyorum:</label><br>
+        <input type="radio" name="q4" value="0"> a. Çoğu zaman<br>
+        <input type="radio" name="q4" value="30"> b. Bazen<br>
+        <input type="radio" name="q4" value="60"> c. Hiçbir zaman
+      </div>
+    </div>
+
+    <!-- ULAŞIM -->
+    <div class="section">
+      <h2>ULAŞIM</h2>
+      <div class="question">
+        <label>5. Şehir içi ulaşım için en çok hangisini kullanırsınız?</label><br>
+        <input type="radio" name="q5" value="400"> a. Kendi aracım<br>
+        <input type="radio" name="q5" value="300"> b. Toplu taşıma<br>
+        <input type="radio" name="q5" value="200"> c. Bisiklet veya yürüyerek
+      </div>
+      <div class="question">
+        <label>6. Uçakla yılda kaç kez seyahat edersiniz?</label><br>
+        <input type="radio" name="q6" value="400"> a. 4 veya daha fazla<br>
+        <input type="radio" name="q6" value="200"> b. 1-3 kez<br>
+        <input type="radio" name="q6" value="100"> c. Hiç
+      </div>
+      <div class="question">
+        <label>7. Aracınızın yakıt tipi nedir?</label><br>
+        <input type="radio" name="q7" value="400"> a. Benzin/Dizel<br>
+        <input type="radio" name="q7" value="200"> b. Hibrit<br>
+        <input type="radio" name="q7" value="100"> c. Elektrik
+      </div>
+    </div>
+
+    <!-- SU ve ENERJİ -->
+    <div class="section">
+      <h2>SU ve ENERJİ</h2>
+      <div class="question">
+        <label>8. Elektrik kullanımınızı azaltmak için önlem alıyor musunuz?</label><br>
+        <input type="radio" name="q8" value="0"> a. Evet<br>
+        <input type="radio" name="q8" value="60"> b. Hayır
+      </div>
+      <div class="question">
+        <label>9. Güneş enerjisi kullanıyor musunuz?</label><br>
+        <input type="radio" name="q9" value="0"> a. Evet<br>
+        <input type="radio" name="q9" value="60"> b. Hayır
+      </div>
+      <div class="question">
+        <label>10. Su tasarrufu için önlem alıyor musunuz?</label><br>
+        <input type="radio" name="q10" value="0"> a. Evet<br>
+        <input type="radio" name="q10" value="60"> b. Hayır
+      </div>
+    </div>
+
+    <!-- GİYİM ve EŞYA -->
+    <div class="section">
+      <h2>GİYİM ve EŞYA</h2>
+      <div class="question">
+        <label>11. Yılda kaç kıyafet alırsınız?</label><br>
+        <input type="radio" name="q11" value="400"> a. 30'dan fazla<br>
+        <input type="radio" name="q11" value="200"> b. 10-30 arası<br>
+        <input type="radio" name="q11" value="100"> c. 10'dan az
+      </div>
+      <div class="question">
+        <label>12. Kullanmadığınız kıyafetleri ne yaparsınız?</label><br>
+        <input type="radio" name="q12" value="60"> a. Atarım<br>
+        <input type="radio" name="q12" value="30"> b. Bağışlarım<br>
+        <input type="radio" name="q12" value="0"> c. Yeniden kullanırım / dönüştürürüm
+      </div>
+    </div>
+
+    <!-- BARINMA -->
+    <div class="section">
+      <h2>BARINMA</h2>
+      <div class="question">
+        <label>13. Evinizin yalıtımı:</label><br>
+        <input type="radio" name="q13" value="0"> a. Çok iyi<br>
+        <input type="radio" name="q13" value="30"> b. Orta<br>
+        <input type="radio" name="q13" value="60"> c. Kötü
+      </div>
+      <div class="question">
+        <label>14. Evdeki kişi başı alan:</label><br>
+        <input type="radio" name="q14" value="400"> a. 60 m² üzeri<br>
+        <input type="radio" name="q14" value="200"> b. 30-60 m² arası<br>
+        <input type="radio" name="q14" value="100"> c. 30 m² altı
+      </div>
+    </div>
+
+    <button type="button" onclick="calculate()">Hesapla</button>
+  </form>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function calculate() {
+      const form = document.forms['quizForm'];
+      let total = 0;
+      let answeredAll = true;
+
+      for (let i = 1; i <= 14; i++) {
+        const q = form['q' + i];
+        if (!q || !q.value) {
+          answeredAll = false;
+          continue;
+        }
+        total += parseInt(q.value);
+      }
+
+      if (!answeredAll) {
+        alert('Lütfen tüm soruları yanıtlayınız.');
+        return;
+      }
+
+      const worldCount = (total / 300).toFixed(2);
+      document.getElementById('result').innerText =
+        `Toplam puanınız: ${total}\nEğer herkes sizin gibi yaşasaydı, ${worldCount} Dünya'ya ihtiyaç olurdu.`;
+    }
+  </script>
+</body>
+</html>
+
+    const worldCount = (total / 300).toFixed(2);
+    document.getElementById('result').innerText =
+      `Toplam puanınız: ${total}\nEğer herkes sizin gibi yaşasaydı, ${worldCount} Dünya'ya ihtiyaç olurdu.`;
+
+    // Google Sheets'e veri gönder
+    fetch('https://script.google.com/macros/s/AKfycbwN2KY0hygaIF_OGQR1WXy7YaDhWpb2ukzj6PBnlzl4XGrnLIwzMOqSlI43ipvwPaYHmQ/exec', {
+      method: 'POST',
+      body: JSON.stringify({
+        totalScore: total,
+        worldCount: worldCount
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Veri başarıyla gönderildi.");
+    })
+    .catch(error => {
+      console.error("Hata oluştu:", error);
+    });
+  }
+</script>
